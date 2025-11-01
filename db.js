@@ -1,12 +1,11 @@
-// filepath: c:\Users\Dandrich\Documents\CSE341-Web-Services\cse341-w1-develop-an-api\db.js
+require('dotenv').config(); // Load environment variables from .env file
 const mongoose = require('mongoose');
+
+console.log('MongoDB URI:', process.env.MONGODB_URI); // Log the URI to check if it's loaded
 
 const connectDB = async () => {
     try {
-        await mongoose.connect('mongodb://localhost:27017/yourDatabaseName', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
+        await mongoose.connect(process.env.MONGODB_URI); // Removed deprecated options
         console.log('MongoDB connected successfully');
     } catch (error) {
         console.error('MongoDB connection failed:', error);
@@ -15,3 +14,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
