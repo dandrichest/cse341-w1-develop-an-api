@@ -1,0 +1,26 @@
+### Create Contact
+POST http://localhost:8080/api/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Daniel",
+  "lastName": "Oyeniyi",
+  "email": "daniel@example.com",
+  "favoriteColor": "Blue",
+  "birthday": "1990-05-15"
+}
+
+### Update Contact
+PUT http://localhost:8080/professionals/{{professionalId}}
+Content-Type: application/json
+
+{
+  "firstName": "Daniel",
+  "lastName": "Oyeniyi",
+  "email": "daniel.new@example.com",
+  "favoriteColor": "Green",
+  "birthday": "1990-05-15"
+}
+
+### Delete Contact
+DELETE http://localhost:8080/api/professionals/{{professionalId}}

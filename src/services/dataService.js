@@ -1,12 +1,23 @@
 const Professional = require('../../models/Professional');
 
-const getData = async () => {
-    try {
-        const professionals = await Professional.find(); // Retrieve all professionals
-        return professionals;
-    } catch (error) {
-        throw new Error('Error retrieving data from MongoDB: ' + error.message);
+class DataService {
+    // Fetch all professionals
+    async getAllProfessionals() {
+        try {
+            return await Professional.find();
+        } catch (error) {
+            throw new Error('Error retrieving professionals: ' + error.message);
+        }
     }
-};
 
-module.exports = { getData };
+    // Fetch a single professional by ID
+    async getProfessionalById(id) {
+        try {
+            return await Professional.findById(id);
+        } catch (error) {
+            throw new Error('Error retrieving professional by ID: ' + error.message);
+        }
+    }
+}
+
+module.exports = new DataService();

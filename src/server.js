@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const apiRoutes = require('./routes/api');
 const connectDB = require('../db'); // Import the MongoDB connection
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require('swagger-jsdoc');
+
 
 const app = express();
 const PORT = 8080;
@@ -33,3 +36,19 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+const swaggerOptions = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'Contacts API',
+      version: '1.0.0',
+      description: 'API for managing contacts',
+    },
+    servers: [{ url: 'https://cse341-wk01.onrender.com/' }],
+  },
+  apis: ['./src/routes/*.js'],
+};
+
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));

@@ -1,4 +1,4 @@
-// filepath: c:\Users\Dandrich\Documents\CSE341-Web-Services\cse341-w1-develop-an-api\models\Professional.js
+
 const mongoose = require('mongoose');
 
 const professionalSchema = new mongoose.Schema({

@@ -7,8 +7,13 @@ async function apiFetch(url) {
 
 const getData = async () => {
   const data = await apiFetch('http://localhost:8080/professional');
-  displayAllData(data);
+  if (data.length > 0) {
+    displayAllData(data[0]); // Use the first professional
+  } else {
+    console.warn('No professional data found.');
+  }
 };
+
 
 function displayAllData(data) {
   displayProfessionalName(data.professionalName);
