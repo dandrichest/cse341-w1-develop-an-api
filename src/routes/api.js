@@ -82,9 +82,33 @@ router.post('/contacts', async (req, res) => {
 
 /**
  * @swagger
- * /api/contacts/{id}:
+ * /contacts/{id}:
  *   put:
  *     summary: Update a contact by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: 64f1a2b3c4d5e6f7890a1234
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstName: { type: string }
+ *               lastName: { type: string }
+ *               email: { type: string }
+ *               favoriteColor: { type: string }
+ *               birthday: { type: string, format: date }
+ *     responses:
+ *       204:
+ *         description: Contact updated successfully
+ *       400:
+ *         description: Invalid input
  */
 router.put('/contacts/:id', async (req, res) => {
   try {
@@ -97,9 +121,21 @@ router.put('/contacts/:id', async (req, res) => {
 
 /**
  * @swagger
- * /api/contacts/{id}:
+ * /contacts/{id}:
  *   delete:
  *     summary: Delete a contact by ID
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *           example: 64f1a2b3c4d5e6f7890a1234
+ *     responses:
+ *       204:
+ *         description: Contact deleted successfully
+ *       404:
+ *         description: Contact not found
  */
 router.delete('/contacts/:id', async (req, res) => {
   try {
