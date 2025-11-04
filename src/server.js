@@ -26,7 +26,7 @@ const frontendPath = path.join(__dirname, '..', 'frontend');
 app.use(express.static(frontendPath));
 
 // API routes
-app.use('/api', apiRoutes);
+app.use('/', apiRoutes);
 
 // Serve index.html for the root path
 app.get('/', (req, res) => {
