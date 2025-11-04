@@ -40,7 +40,7 @@ router.get('/contacts', async (req, res) => {
  *       404:
  *         description: Contact not found
  */
-router.get('/contacts/:id', async (req, res) => {
+router.get('/contact/:id', async (req, res) => {
   try {
     const contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ error: 'Contact not found' });
@@ -71,7 +71,7 @@ router.get('/contacts/:id', async (req, res) => {
  *       201:
  *         description: Contact created
  */
-router.post('/contacts', async (req, res) => {
+router.post('/contact', async (req, res) => {
   try {
     const contact = new Contact(req.body);
     const savedContact = await contact.save();
@@ -87,7 +87,7 @@ router.post('/contacts', async (req, res) => {
  *   put:
  *     summary: Update a contact by ID
  */
-router.put('/contacts/:id', async (req, res) => {
+router.put('/contact/:id', async (req, res) => {
   try {
     await Contact.findByIdAndUpdate(req.params.id, req.body);
     res.sendStatus(204);
@@ -102,7 +102,7 @@ router.put('/contacts/:id', async (req, res) => {
  *   delete:
  *     summary: Delete a contact by ID
  */
-router.delete('/contacts/:id', async (req, res) => {
+router.delete('/contact/:id', async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
     res.sendStatus(204);
