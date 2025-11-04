@@ -80,9 +80,10 @@ router.post('/contacts', async (req, res) => {
   }
 });
 
+
 /**
  * @swagger
- * /contacts/{id}:
+ * /api/contacts/{id}:
  *   put:
  *     summary: Update a contact by ID
  *     parameters:
@@ -110,7 +111,8 @@ router.post('/contacts', async (req, res) => {
  *       400:
  *         description: Invalid input
  */
-router.put('/contacts/:id', async (req, res) => {
+
+router.put('/api/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndUpdate(req.params.id, req.body);
     res.sendStatus(204);
@@ -119,9 +121,10 @@ router.put('/contacts/:id', async (req, res) => {
   }
 });
 
+
 /**
  * @swagger
- * /contacts/{id}:
+ * /api/contacts/{id}:
  *   delete:
  *     summary: Delete a contact by ID
  *     parameters:
@@ -137,7 +140,8 @@ router.put('/contacts/:id', async (req, res) => {
  *       404:
  *         description: Contact not found
  */
-router.delete('/contacts/:id', async (req, res) => {
+
+router.delete('/api/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
     res.sendStatus(204);
