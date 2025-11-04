@@ -1,7 +1,6 @@
 const express = require('express');
 const DataController = require('../controllers/dataController');
 const dataService = require('../services/dataService');
-const Professional = require('../../models/Professional');
 const router = express.Router();
 const Contact = require('../../models/Contact');
 
@@ -40,7 +39,7 @@ router.get('/contacts', async (req, res) => {
  *       404:
  *         description: Contact not found
  */
-router.get('/contact/:id', async (req, res) => {
+router.get('/contacts/:id', async (req, res) => {
   try {
     const contact = await Contact.findById(req.params.id);
     if (!contact) return res.status(404).json({ error: 'Contact not found' });
@@ -71,7 +70,7 @@ router.get('/contact/:id', async (req, res) => {
  *       201:
  *         description: Contact created
  */
-router.post('/contact', async (req, res) => {
+router.post('/contacts', async (req, res) => {
   try {
     const contact = new Contact(req.body);
     const savedContact = await contact.save();
@@ -87,7 +86,7 @@ router.post('/contact', async (req, res) => {
  *   put:
  *     summary: Update a contact by ID
  */
-router.put('/contact/:id', async (req, res) => {
+router.put('/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndUpdate(req.params.id, req.body);
     res.sendStatus(204);
@@ -102,7 +101,7 @@ router.put('/contact/:id', async (req, res) => {
  *   delete:
  *     summary: Delete a contact by ID
  */
-router.delete('/contact/:id', async (req, res) => {
+router.delete('/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
     res.sendStatus(204);

@@ -1,21 +1,21 @@
-const Professional = require('../../models/Professional');
+const Contact = require('../../models/Contact');
 
 class DataService {
     // Fetch all professionals
-    async getAllProfessionals() {
+    async getAllContacts() {
         try {
-            return await Professional.find();
+            return await Contact.find();
         } catch (error) {
-            throw new Error('Error retrieving professionals: ' + error.message);
+            throw new Error('Error retrieving contacts: ' + error.message);
         }
     }
 
-    // Fetch a single professional by ID
-    async getProfessionalById(id) {
+    // Fetch a single Contact by ID
+    async getcontactById(id) {
         try {
-            return await Professional.findById(id);
+            return await Contact.findById(id);
         } catch (error) {
-            throw new Error('Error retrieving professional by ID: ' + error.message);
+            throw new Error('Error retrieving contact by ID: ' + error.message);
         }
     }
 }
