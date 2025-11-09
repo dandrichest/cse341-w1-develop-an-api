@@ -112,7 +112,7 @@ router.post('/contacts', async (req, res) => {
  *         description: Invalid input
  */
 
-router.put('/api/contacts/:id', async (req, res) => {
+router.put('/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndUpdate(req.params.id, req.body);
     res.sendStatus(204);
@@ -141,7 +141,7 @@ router.put('/api/contacts/:id', async (req, res) => {
  *         description: Contact not found
  */
 
-router.delete('/api/contacts/:id', async (req, res) => {
+router.delete('/contacts/:id', async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
     res.sendStatus(204);
