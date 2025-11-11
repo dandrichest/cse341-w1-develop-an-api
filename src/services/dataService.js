@@ -10,12 +10,40 @@ class DataService {
         }
     }
 
-    // Fetch a single Contact by ID
-    async getcontactById(id) {
+    // Fetch a single contact by ID
+    async getContactById(id) {
         try {
             return await Contact.findById(id);
         } catch (error) {
-            throw new Error('Error retrieving contact by ID: ' + error.message);
+            throw new Error('Error retrieving contact: ' + error.message);
+        }
+    }
+
+    // Create a new contact
+    async createContact(contactData) {
+        try {
+            const newContact = new Contact(contactData);
+            return await newContact.save();
+        } catch (error) {
+            throw new Error('Error creating contact: ' + error.message);
+        }
+    }
+
+    // Update a contact
+    async updateContact(id, updateData) {
+        try {
+            return await Contact.findByIdAndUpdate(id, updateData, { new: true });
+        } catch (error) {
+            throw new Error('Error updating contact: ' + error.message);
+        }
+    }
+
+    // Delete a contact
+    async deleteContact(id) {
+        try {
+            return await Contact.findByIdAndDelete(id);
+        } catch (error) {
+            throw new Error('Error deleting contact: ' + error.message);
         }
     }
 }
